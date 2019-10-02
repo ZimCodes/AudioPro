@@ -14,7 +14,7 @@ _freq=>b.freq;
 0.15=>j.mix;
 //Suck
 100 => s.freq;
--.3 =>s.gain;
+-.28 =>s.gain;
 
 //Bow Layer
 fun void bowloop(){
@@ -22,7 +22,7 @@ fun void bowloop(){
     now =>time curtime;
     100=>float curfreq;
     while(true){
-        if(now >= curtime + 2::second){
+        if(now >= curtime + Math.random2f(1.9,2)::second){
              Math.random2f(40,210) => curfreq;
             now=> curtime;
         }
@@ -34,7 +34,8 @@ fun void bowloop(){
         
         }
 }
-
+//Shreds
+spork~bowloop();
 spork~bowloop();
 while(true){
     s =>j=> dac;
